@@ -21,8 +21,9 @@ class ReplyApp extends StatelessWidget {
           accentColor: AppTheme.orange,
           textTheme: AppTheme.textTheme,
         ),
+        initialRoute: 'replyMain',
         onGenerateRoute: (RouteSettings settings) {
-          if (settings.isInitialRoute) {
+          if (settings.name == 'replyMain') {
             return PageRouteBuilder<void>(pageBuilder: (BuildContext context, _, __) => HomePage());
           }
         },
