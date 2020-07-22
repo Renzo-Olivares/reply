@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart' as provider;
 import 'package:reply/model/email.dart';
-import 'package:reply/styling.dart';
+import 'package:reply/colors.dart';
 import 'package:reply/transition/expand_transition.dart';
 import 'package:reply/ui/rounded_avatar.dart';
 
@@ -51,7 +51,7 @@ class _DetailsPageState extends State<DetailsPage> {
           child: Container(
             height: double.infinity,
             margin: const EdgeInsets.all(4),
-            color: AppTheme.nearlyWhite,
+            color: ReplyColors.nearlyWhite,
             child: Material(
               color: Colors.white,
               child: SingleChildScrollView(

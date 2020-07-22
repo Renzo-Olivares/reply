@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:reply/details_page.dart';
 import 'package:reply/model/email.dart';
-import 'package:reply/styling.dart';
+import 'package:reply/colors.dart';
 import 'package:reply/ui/rounded_avatar.dart';
 
 class ListItem extends StatelessWidget {
@@ -33,8 +33,8 @@ class ListItem extends StatelessWidget {
       },
       background: Container(
         decoration: BoxDecoration(
-          color: AppTheme.orange,
-          border: Border.all(color: AppTheme.notWhite, width: 2),
+          color: ReplyColors.orange,
+          border: Border.all(color: ReplyColors.notWhite, width: 2),
         ),
         alignment: Alignment.centerLeft,
         padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -45,8 +45,8 @@ class ListItem extends StatelessWidget {
       ),
       secondaryBackground: Container(
         decoration: BoxDecoration(
-          color: AppTheme.dismissibleBackground,
-          border: Border.all(color: AppTheme.notWhite, width: 2),
+          color: ReplyColors.dismissibleBackground,
+          border: Border.all(color: ReplyColors.notWhite, width: 2),
         ),
         alignment: Alignment.centerRight,
         padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -58,7 +58,7 @@ class ListItem extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(2),
         child: Material(
-          color: AppTheme.nearlyWhite,
+          color: ReplyColors.nearlyWhite,
           child: InkWell(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
@@ -92,14 +92,14 @@ class ListItem extends StatelessWidget {
             children: <Widget>[
               Text(
                 '${email.sender} — ${email.time}',
-                style: textTheme.caption.copyWith(color: email.isRead ? AppTheme.deactivatedText : AppTheme.darkText),
+                style: textTheme.caption.copyWith(color: email.isRead ? ReplyColors.deactivatedText : ReplyColors.darkText),
               ),
               const SizedBox(height: 2),
               Text(
                 email.subject,
                 style: email.containsPictures
                     ? textTheme.headline5
-                    : textTheme.headline6.copyWith(color: email.isRead ? AppTheme.deactivatedText : AppTheme.darkText),
+                    : textTheme.headline6.copyWith(color: email.isRead ? ReplyColors.deactivatedText : ReplyColors.darkText),
                 overflow: TextOverflow.ellipsis,
               ),
             ],

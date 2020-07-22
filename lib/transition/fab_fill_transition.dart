@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reply/styling.dart';
+import 'package:reply/colors.dart';
 
 class FabFillTransition extends StatelessWidget {
   const FabFillTransition({
@@ -73,7 +73,7 @@ class FabFillTransition extends StatelessWidget {
                         Container(
                           width: double.infinity,
                           height: double.infinity,
-                          color: AppTheme.orange,
+                          color: ReplyColors.orange,
                           alignment: Alignment.center,
                           child: ScaleTransition(
                             alignment: Alignment.topCenter,

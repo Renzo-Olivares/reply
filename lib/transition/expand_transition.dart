@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reply/styling.dart';
+import 'package:reply/colors.dart';
 
 class ExpandItemPageTransition extends StatelessWidget {
   const ExpandItemPageTransition({
@@ -59,7 +59,7 @@ class ExpandItemPageTransition extends StatelessWidget {
                     child: FadeTransition(
                       opacity: fadeMaterialBackground,
                       child: Material(
-                        color: AppTheme.nearlyWhite,
+                        color: ReplyColors.nearlyWhite,
                         child: child,
                       ),
                     ),

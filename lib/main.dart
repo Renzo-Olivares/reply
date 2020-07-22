@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart' as provider;
 import 'package:reply/home_page.dart';
 import 'package:reply/model/email_model.dart';
-import 'package:reply/styling.dart';
+import 'package:reply/colors.dart';
 
 void main() => runApp(ReplyApp());
 
@@ -17,9 +17,9 @@ class ReplyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Reply',
         theme: ThemeData(
-          scaffoldBackgroundColor: AppTheme.notWhite,
-          canvasColor: AppTheme.notWhite,
-          accentColor: AppTheme.orange,
+          scaffoldBackgroundColor: ReplyColors.notWhite,
+          canvasColor: ReplyColors.notWhite,
+          accentColor: ReplyColors.orange,
           textTheme: GoogleFonts.workSansTextTheme(),
         ),
         initialRoute: 'replyMain',

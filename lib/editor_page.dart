@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart' as provider;
 import 'package:reply/model/email_model.dart';
-import 'package:reply/styling.dart';
+import 'package:reply/colors.dart';
 import 'package:reply/transition/fab_fill_transition.dart';
 
 import 'model/email.dart';
@@ -56,7 +56,7 @@ class _EditorPageState extends State<EditorPage> {
           child: Container(
             height: double.infinity,
             margin: const EdgeInsets.all(4),
-            color: AppTheme.nearlyWhite,
+            color: ReplyColors.nearlyWhite,
             child: Material(
               color: Colors.white,
               child: SingleChildScrollView(
@@ -94,7 +94,7 @@ class _EditorPageState extends State<EditorPage> {
   Widget get _spacer {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12),
-      child: Container(width: double.infinity, height: 1, color: AppTheme.spacer),
+      child: Container(width: double.infinity, height: 1, color: ReplyColors.spacer),
     );
   }
 
@@ -108,7 +108,7 @@ class _EditorPageState extends State<EditorPage> {
             onPressed: () => Navigator.of(context).pop(),
             icon: const Icon(
               Icons.close,
-              color: AppTheme.lightText,
+              color: ReplyColors.lightText,
             ),
           ),
           Expanded(child: Text(_subject, style: Theme.of(context).textTheme.headline6)),
@@ -151,7 +151,7 @@ class _EditorPageState extends State<EditorPage> {
             Expanded(child: Text(_senderEmail, style: Theme.of(context).textTheme.subtitle2)),
             const Icon(
               Icons.arrow_drop_down,
-              color: AppTheme.lightText,
+              color: ReplyColors.lightText,
               size: 28,
             )
           ],
@@ -170,7 +170,7 @@ class _EditorPageState extends State<EditorPage> {
             child: Wrap(
               children: <Widget>[
                 Chip(
-                    backgroundColor: AppTheme.chipBackground,
+                    backgroundColor: ReplyColors.chipBackground,
                     padding: EdgeInsets.zero,
                     avatar: CircleAvatar(
                       backgroundImage: AssetImage('assets/images/$_recipientAvatar'),
@@ -181,7 +181,7 @@ class _EditorPageState extends State<EditorPage> {
           ),
           const Icon(
             Icons.add_circle_outline,
-            color: AppTheme.lightText,
+            color: ReplyColors.lightText,
           )
         ],
       ),

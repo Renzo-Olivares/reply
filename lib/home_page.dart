@@ -4,7 +4,7 @@ import 'package:provider/provider.dart' as provider;
 import 'package:reply/editor_page.dart';
 import 'package:reply/list_page.dart';
 import 'package:reply/model/email_model.dart';
-import 'package:reply/styling.dart';
+import 'package:reply/colors.dart';
 import 'package:reply/transition/scale_out_transition.dart';
 
 class HomePage extends StatefulWidget {
@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> {
       child: SlideTransition(
         position: slideOut,
         child: BottomAppBar(
-          color: AppTheme.grey,
+          color: ReplyColors.grey,
           shape: AutomaticNotchedShape(RoundedRectangleBorder(), CircleBorder()),
           notchMargin: 8,
           child: SizedBox(
@@ -141,7 +141,7 @@ class _HomePageState extends State<HomePage> {
                 animation: showEditAsAction ? 'ReplyToEdit' : 'EditToReply',
               ),
             ),
-            backgroundColor: AppTheme.orange,
+            backgroundColor: ReplyColors.orange,
             onPressed: () => Navigator.of(context).push<void>(
                   EditorPage.route(context, _fabKey),
                 ),
