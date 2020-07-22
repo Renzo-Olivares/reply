@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart' as provider;
 import 'package:reply/home_page.dart';
 import 'package:reply/model/email_model.dart';
@@ -19,7 +20,7 @@ class ReplyApp extends StatelessWidget {
           scaffoldBackgroundColor: AppTheme.notWhite,
           canvasColor: AppTheme.notWhite,
           accentColor: AppTheme.orange,
-          textTheme: AppTheme.textTheme,
+          textTheme: GoogleFonts.workSansTextTheme(),
         ),
         initialRoute: 'replyMain',
         onGenerateRoute: (settings) {

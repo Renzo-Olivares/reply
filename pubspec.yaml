@@ -12,6 +12,7 @@ dependencies:
 
   provider: 4.3.1
   flare_flutter: 2.0.5
+  google_fonts: ^1.1.0
 
 dev_dependencies:
   flutter_test:
@@ -24,14 +25,3 @@ flutter:
   assets:
     - assets/flare/
     - assets/images/
-
-  fonts:
-    - family: WorkSans
-      fonts:
-        - asset: assets/fonts/WorkSans-Regular.ttf
-        - asset: assets/fonts/WorkSans-Medium.ttf
-          weight: 500
-        - asset: assets/fonts/WorkSans-SemiBold.ttf
-          weight: 600
-        - asset: assets/fonts/WorkSans-Bold.ttf
-          weight: 700

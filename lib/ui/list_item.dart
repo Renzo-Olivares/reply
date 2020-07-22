@@ -65,9 +65,9 @@ class ListItem extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  _header,
+                  _header(context),
                   if (!email.isRead) const SizedBox(height: 14),
-                  if (!email.isRead) _emailPreview,
+                  if (!email.isRead) _emailPreview(context),
                 ],
               ),
             ),
@@ -78,7 +78,9 @@ class ListItem extends StatelessWidget {
     );
   }
 
-  Widget get _header {
+  Widget _header(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     return Row(
       mainAxisSize: MainAxisSize.max,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -90,14 +92,14 @@ class ListItem extends StatelessWidget {
             children: <Widget>[
               Text(
                 '${email.sender} — ${email.time}',
-                style: AppTheme.caption.copyWith(color: email.isRead ? AppTheme.deactivatedText : AppTheme.darkText),
+                style: textTheme.caption.copyWith(color: email.isRead ? AppTheme.deactivatedText : AppTheme.darkText),
               ),
               const SizedBox(height: 2),
               Text(
                 email.subject,
                 style: email.containsPictures
-                    ? AppTheme.headline
-                    : AppTheme.title.copyWith(color: email.isRead ? AppTheme.deactivatedText : AppTheme.darkText),
+                    ? textTheme.headline5
+                    : textTheme.headline6.copyWith(color: email.isRead ? AppTheme.deactivatedText : AppTheme.darkText),
                 overflow: TextOverflow.ellipsis,
               ),
             ],
@@ -108,7 +110,8 @@ class ListItem extends StatelessWidget {
     );
   }
 
-  Widget get _emailPreview {
+  Widget _emailPreview(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -129,7 +132,7 @@ class ListItem extends StatelessWidget {
                 email.message,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
-                style: AppTheme.subtitle,
+                style: textTheme.subtitle2,
               ),
             ),
           ],
