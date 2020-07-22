@@ -18,13 +18,13 @@ class AppTheme {
   static const Color chipBackground = Color(0xFFEEF1F3);
   static const Color spacer = Color(0xFFF2F2F2);
 
-  static const TextTheme textTheme = TextTheme(
-    display1: display1,
-    headline: headline,
-    title: title,
-    subtitle: subtitle,
-    body2: body2,
-    body1: body1,
+  static TextTheme textTheme = TextTheme(
+    headline4: display1,
+    headline5: headline,
+    headline6: title,
+    subtitle2: subtitle,
+    bodyText1: body2,
+    bodyText2: body1,
     caption: caption,
   );
 

@@ -111,7 +111,7 @@ class _EditorPageState extends State<EditorPage> {
               color: AppTheme.lightText,
             ),
           ),
-          Expanded(child: Text(_subject, style: Theme.of(context).textTheme.title)),
+          Expanded(child: Text(_subject, style: Theme.of(context).textTheme.headline6)),
           IconButton(
             onPressed: () => Navigator.of(context).pop(),
             icon: Image.asset(
@@ -136,11 +136,11 @@ class _EditorPageState extends State<EditorPage> {
       itemBuilder: (BuildContext context) => <PopupMenuItem<String>>[
             PopupMenuItem<String>(
               value: 'from.jennifer@example.com',
-              child: Text('from.jennifer@example.com', style: Theme.of(context).textTheme.subtitle),
+              child: Text('from.jennifer@example.com', style: Theme.of(context).textTheme.subtitle2),
             ),
             PopupMenuItem<String>(
               value: 'hey@phantom.works',
-              child: Text('hey@phantom.works', style: Theme.of(context).textTheme.subtitle),
+              child: Text('hey@phantom.works', style: Theme.of(context).textTheme.subtitle2),
             ),
           ],
       child: Padding(
@@ -148,7 +148,7 @@ class _EditorPageState extends State<EditorPage> {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Expanded(child: Text(_senderEmail, style: Theme.of(context).textTheme.subtitle)),
+            Expanded(child: Text(_senderEmail, style: Theme.of(context).textTheme.subtitle2)),
             const Icon(
               Icons.arrow_drop_down,
               color: AppTheme.lightText,
@@ -175,7 +175,7 @@ class _EditorPageState extends State<EditorPage> {
                     avatar: CircleAvatar(
                       backgroundImage: AssetImage('assets/images/$_recipientAvatar'),
                     ),
-                    label: Text(_recipient, style: Theme.of(context).textTheme.subtitle)),
+                    label: Text(_recipient, style: Theme.of(context).textTheme.subtitle2)),
               ],
             ),
           ),

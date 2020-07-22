@@ -84,7 +84,7 @@ class _DetailsPageState extends State<DetailsPage> {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Expanded(child: Text(widget.email.subject, style: Theme.of(context).textTheme.display1)),
+                Expanded(child: Text(widget.email.subject, style: Theme.of(context).textTheme.headline4)),
                 IconButton(
                   icon: const Icon(Icons.keyboard_arrow_down),
                   padding: const EdgeInsets.only(left: 24, top: 0, right: 12),
@@ -111,7 +111,7 @@ class _DetailsPageState extends State<DetailsPage> {
                     children: <Widget>[
                       Text(
                         '${widget.email.sender} - ${widget.email.time}',
-                        style: Theme.of(context).textTheme.body2,
+                        style: Theme.of(context).textTheme.bodyText1,
                       ),
                       const SizedBox(height: 2),
                       Text(
@@ -147,7 +147,7 @@ class _DetailsPageState extends State<DetailsPage> {
             const SizedBox(height: 24),
             Text(
               widget.email.message,
-              style: Theme.of(context).textTheme.body1,
+              style: Theme.of(context).textTheme.bodyText2,
             ),
             if (widget.email.containsPictures) const SizedBox(height: 24),
             if (widget.email.containsPictures) Image.asset('assets/images/photo_grid.jpg'),

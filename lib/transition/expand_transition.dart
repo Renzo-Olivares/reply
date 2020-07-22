@@ -81,7 +81,7 @@ class ExpandItemPageTransition extends StatelessWidget {
 
   double _calculateHeaderHeight(BuildContext context, String msg) {
     final double maxWidth = MediaQuery.of(context).size.width - 80; // Padding on both sides and arrow button
-    final TextSpan span = TextSpan(style: Theme.of(context).textTheme.display1, text: msg);
+    final TextSpan span = TextSpan(style: Theme.of(context).textTheme.headline4, text: msg);
     final TextPainter painter = TextPainter(text: span, textDirection: TextDirection.ltr);
     painter.layout(minWidth: 0, maxWidth: maxWidth);
     return painter.height + 26;
