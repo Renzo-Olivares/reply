@@ -8,14 +8,14 @@ class ListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return provider.Consumer<EmailModel>(
-      builder: (context, EmailModel model, Widget child) {
+      builder: (context, model, child) {
         return ScaleOutTransition(
           child: Material(
             child: Padding(
               padding: const EdgeInsets.all(2),
               child: ListView.builder(
                 itemCount: model.emails.length,
-                itemBuilder: (BuildContext context, int position) {
+                itemBuilder: (context, position) {
                   return ListItem(
                     id: position,
                     email: model.emails[position],

@@ -16,14 +16,14 @@ class DetailsPage extends StatefulWidget {
   })  : assert(id != null && email != null && sourceRect != null),
         super(key: key);
 
-  static Route<dynamic> route(BuildContext context, int id, Email email) {
+  static Route<dynamic> route(context, id, email) {
     final RenderBox box = context.findRenderObject();
     final Rect sourceRect = box.localToGlobal(Offset.zero) & box.size;
 
     provider.Provider.of<EmailModel>(context).currentlySelectedEmailId = id;
 
     return PageRouteBuilder<void>(
-      pageBuilder: (BuildContext context, _, __) => DetailsPage(
+      pageBuilder: (context, _, __) => DetailsPage(
             id: id,
             email: email,
             sourceRect: sourceRect,

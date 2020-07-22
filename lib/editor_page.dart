@@ -11,12 +11,12 @@ class EditorPage extends StatefulWidget {
       : assert(sourceRect != null),
         super(key: key);
 
-  static Route<dynamic> route(BuildContext context, GlobalKey key) {
+  static Route<dynamic> route(context, key) {
     final RenderBox box = key.currentContext.findRenderObject();
     final Rect sourceRect = box.localToGlobal(Offset.zero) & box.size;
 
     return PageRouteBuilder<void>(
-      pageBuilder: (BuildContext context, _, __) => EditorPage(sourceRect: sourceRect),
+      pageBuilder: (context, _, __) => EditorPage(sourceRect: sourceRect),
       transitionDuration: const Duration(milliseconds: 350),
     );
   }

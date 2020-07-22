@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
         body: ScaleOutTransition(
           child: Navigator(
             key: _navigatorKey,
-            onGenerateRoute: (RouteSettings settings) {
+            onGenerateRoute: (settings) {
               if (settings.name == Navigator.defaultRouteName) {
                 return _initialRoute;
               }
@@ -91,7 +91,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget get _actionItems {
     return provider.Consumer<EmailModel>(
-      builder: (context, EmailModel model, Widget child) {
+      builder: (context, model, child) {
         final bool showSecond = model.currentlySelectedEmailId >= 0;
 
         return AnimatedCrossFade(
@@ -128,7 +128,7 @@ class _HomePageState extends State<HomePage> {
     return AnimatedBuilder(
       animation: ModalRoute.of(context).animation,
       child: provider.Consumer<EmailModel>(
-        builder: (context, EmailModel model, Widget child) {
+        builder: (context, model, child) {
           final bool showEditAsAction = model.currentlySelectedEmailId == -1;
 
           return FloatingActionButton(
@@ -148,7 +148,7 @@ class _HomePageState extends State<HomePage> {
           );
         },
       ),
-      builder: (BuildContext context, Widget fab) {
+      builder: (context, fab) {
         final Animation<double> animation = ModalRoute.of(context).animation;
         return SizedBox(
           width: 54 * animation.value,

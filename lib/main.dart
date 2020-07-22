@@ -22,9 +22,9 @@ class ReplyApp extends StatelessWidget {
           textTheme: AppTheme.textTheme,
         ),
         initialRoute: 'replyMain',
-        onGenerateRoute: (RouteSettings settings) {
+        onGenerateRoute: (settings) {
           if (settings.name == 'replyMain') {
-            return PageRouteBuilder<void>(pageBuilder: (BuildContext context, _, __) => HomePage());
+            return PageRouteBuilder<void>(pageBuilder: (context, _, __) => HomePage());
           }
         },
       ),
