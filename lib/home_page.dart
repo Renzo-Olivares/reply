@@ -1,6 +1,6 @@
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:provider/provider.dart' as provider;
 import 'package:reply/editor_page.dart';
 import 'package:reply/list_page.dart';
 import 'package:reply/model/email_model.dart';
@@ -90,8 +90,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget get _actionItems {
-    return Consumer<EmailModel>(
-      builder: (BuildContext context, EmailModel model, Widget child) {
+    return provider.Consumer<EmailModel>(
+      builder: (context, EmailModel model, Widget child) {
         final bool showSecond = model.currentlySelectedEmailId >= 0;
 
         return AnimatedCrossFade(
@@ -127,8 +127,8 @@ class _HomePageState extends State<HomePage> {
   Widget get _fab {
     return AnimatedBuilder(
       animation: ModalRoute.of(context).animation,
-      child: Consumer<EmailModel>(
-        builder: (BuildContext context, EmailModel model, Widget child) {
+      child: provider.Consumer<EmailModel>(
+        builder: (context, EmailModel model, Widget child) {
           final bool showEditAsAction = model.currentlySelectedEmailId == -1;
 
           return FloatingActionButton(
@@ -162,7 +162,7 @@ class _HomePageState extends State<HomePage> {
   Future<bool> _willPopCallback() async {
     if (_navigatorKey.currentState.canPop()) {
       _navigatorKey.currentState.pop();
-      Provider.of<EmailModel>(context).currentlySelectedEmailId = -1;
+      provider.Provider.of<EmailModel>(context).currentlySelectedEmailId = -1;
       return false;
     }
     return true;
