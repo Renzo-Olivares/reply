@@ -1,4 +1,3 @@
-import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart' as provider;
 import 'package:reply/editor_page.dart';
@@ -16,8 +15,8 @@ class _HomePageState extends State<HomePage> {
   final GlobalKey<NavigatorState> _navigatorKey = GlobalKey();
 
   final GlobalKey _fabKey = GlobalKey();
-  final PageRouteBuilder<void> _initialRoute =
-      PageRouteBuilder<void>(pageBuilder: (BuildContext context, _, __) => ListPage());
+  final PageRouteBuilder<void> _initialRoute = PageRouteBuilder<void>(
+      pageBuilder: (BuildContext context, _, __) => ListPage());
 
   @override
   Widget build(BuildContext context) {
@@ -42,10 +41,15 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget get _bottomNavigation {
-    final Animation<Offset> slideIn = Tween<Offset>(begin: const Offset(0, 1), end: Offset.zero)
-        .animate(CurvedAnimation(parent: ModalRoute.of(context).animation, curve: Curves.ease));
-    final Animation<Offset> slideOut = Tween<Offset>(begin: Offset.zero, end: const Offset(0, 1))
-        .animate(CurvedAnimation(parent: ModalRoute.of(context).secondaryAnimation, curve: Curves.fastOutSlowIn));
+    final Animation<Offset> slideIn =
+        Tween<Offset>(begin: const Offset(0, 1), end: Offset.zero).animate(
+            CurvedAnimation(
+                parent: ModalRoute.of(context).animation, curve: Curves.ease));
+    final Animation<Offset> slideOut =
+        Tween<Offset>(begin: Offset.zero, end: const Offset(0, 1)).animate(
+            CurvedAnimation(
+                parent: ModalRoute.of(context).secondaryAnimation,
+                curve: Curves.fastOutSlowIn));
 
     return SlideTransition(
       position: slideIn,
@@ -107,7 +111,8 @@ class _HomePageState extends State<HomePage> {
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     IconButton(
-                      icon: Image.asset('assets/images/ic_important.png', width: 28),
+                      icon: Image.asset('assets/images/ic_important.png',
+                          width: 28),
                       onPressed: () => print('Tap!'),
                     ),
                     IconButton(
@@ -117,7 +122,8 @@ class _HomePageState extends State<HomePage> {
                   ],
                 )
               : const SizedBox(),
-          crossFadeState: showSecond ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+          crossFadeState:
+              showSecond ? CrossFadeState.showSecond : CrossFadeState.showFirst,
           duration: Duration(milliseconds: 450),
         );
       },
@@ -136,15 +142,15 @@ class _HomePageState extends State<HomePage> {
             child: SizedBox(
               width: 24,
               height: 24,
-              child: FlareActor(
-                'assets/flare/edit_reply.flr',
-                animation: showEditAsAction ? 'ReplyToEdit' : 'EditToReply',
+              child: Icon(
+                showEditAsAction ? Icons.create : Icons.reply_all,
+                color: Colors.black,
               ),
             ),
             backgroundColor: ReplyColors.orange,
             onPressed: () => Navigator.of(context).push<void>(
-                  EditorPage.route(context, _fabKey),
-                ),
+              EditorPage.route(context, _fabKey),
+            ),
           );
         },
       ),
