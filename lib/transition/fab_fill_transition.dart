@@ -14,7 +14,7 @@ class FabFillTransition extends StatelessWidget {
 
   final Rect source;
   final Widget child;
-  final String icon;
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +28,12 @@ class FabFillTransition extends StatelessWidget {
         );
 
         final Animation<RelativeRect> itemPosition = RelativeRectTween(
-          begin: RelativeRect.fromLTRB(source.left, source.top, constraints.biggest.width - source.right,
-              constraints.biggest.height - source.bottom),
+          begin: RelativeRect.fromLTRB(
+            source.left,
+            source.top,
+            constraints.biggest.width - source.right,
+            constraints.biggest.height - source.bottom,
+          ),
           end: RelativeRect.fill,
         ).animate(positionAnimation);
 
@@ -69,7 +73,7 @@ class FabFillTransition extends StatelessWidget {
                     borderRadius: borderTween.evaluate(positionAnimation),
                     clipBehavior: Clip.antiAlias,
                     child: Stack(
-                      children: <Widget>[
+                      children: [
                         Container(
                           width: double.infinity,
                           height: double.infinity,
@@ -78,15 +82,19 @@ class FabFillTransition extends StatelessWidget {
                           child: ScaleTransition(
                             alignment: Alignment.topCenter,
                             scale: fabIconTween.animate(scaleAnimation),
-                            child: Image.asset(
+                            child: Icon(
                               icon,
-                              width: 24,
+                              size: 24,
                             ),
                           ),
                         ),
                         FadeTransition(
                           opacity: fadeMaterialBackground,
-                          child: ScaleTransition(alignment: Alignment.topCenter, scale: scaleAnimation, child: child),
+                          child: ScaleTransition(
+                            alignment: Alignment.topCenter,
+                            scale: scaleAnimation,
+                            child: child,
+                          ),
                         ),
                       ],
                     ),

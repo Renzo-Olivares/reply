@@ -21,7 +21,8 @@ class ReplyApp extends StatelessWidget {
         onGenerateRoute: (settings) {
           if (settings.name == 'replyMain') {
             return PageRouteBuilder<void>(
-                pageBuilder: (context, _, __) => HomePage());
+              pageBuilder: (context, _, __) => HomePage(),
+            );
           }
         },
       ),
@@ -35,7 +36,8 @@ class ReplyApp extends StatelessWidget {
       canvasColor: ReplyColors.notWhite,
       accentColor: ReplyColors.orange,
       textTheme: _buildReplyTextTheme(
-          GoogleFonts.workSansTextTheme(Theme.of(context).textTheme)),
+        GoogleFonts.workSansTextTheme(Theme.of(context).textTheme),
+      ),
     );
   }
 
@@ -82,7 +84,7 @@ class ReplyApp extends StatelessWidget {
         fontWeight: FontWeight.w400,
         fontSize: 12,
         letterSpacing: 0.2,
-        color: ReplyColors.lightText, // was lightText
+        color: ReplyColors.lightText,
       ),
     );
   }

@@ -12,16 +12,19 @@ class ScaleOutTransition extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Animation<double> primary = ModalRoute.of(context).animation;
-    final Animation<double> secondary = ModalRoute.of(context).secondaryAnimation;
+    final Animation<double> secondary =
+        ModalRoute.of(context).secondaryAnimation;
 
-    final Animation<double> scaleIn = Tween<double>(begin: 0.9, end: 1.0).animate(
+    final Animation<double> scaleIn =
+        Tween<double>(begin: 0.9, end: 1.0).animate(
       CurvedAnimation(
         parent: primary,
         curve: const Interval(0, 1, curve: Curves.fastOutSlowIn),
       ),
     );
 
-    final Animation<double> scaleOut = Tween<double>(begin: 1.0, end: 0.9).animate(
+    final Animation<double> scaleOut =
+        Tween<double>(begin: 1.0, end: 0.9).animate(
       CurvedAnimation(
         parent: secondary,
         curve: const Interval(0.1, 0.8, curve: Curves.fastOutSlowIn),

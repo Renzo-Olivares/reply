@@ -16,7 +16,8 @@ class _HomePageState extends State<HomePage> {
 
   final GlobalKey _fabKey = GlobalKey();
   final PageRouteBuilder<void> _initialRoute = PageRouteBuilder<void>(
-      pageBuilder: (BuildContext context, _, __) => ListPage());
+    pageBuilder: (BuildContext context, _, __) => ListPage(),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -41,15 +42,24 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget get _bottomNavigation {
-    final Animation<Offset> slideIn =
-        Tween<Offset>(begin: const Offset(0, 1), end: Offset.zero).animate(
-            CurvedAnimation(
-                parent: ModalRoute.of(context).animation, curve: Curves.ease));
-    final Animation<Offset> slideOut =
-        Tween<Offset>(begin: Offset.zero, end: const Offset(0, 1)).animate(
-            CurvedAnimation(
-                parent: ModalRoute.of(context).secondaryAnimation,
-                curve: Curves.fastOutSlowIn));
+    final Animation<Offset> slideIn = Tween<Offset>(
+      begin: const Offset(0, 1),
+      end: Offset.zero,
+    ).animate(
+      CurvedAnimation(
+        parent: ModalRoute.of(context).animation,
+        curve: Curves.ease,
+      ),
+    );
+    final Animation<Offset> slideOut = Tween<Offset>(
+      begin: Offset.zero,
+      end: const Offset(0, 1),
+    ).animate(
+      CurvedAnimation(
+        parent: ModalRoute.of(context).secondaryAnimation,
+        curve: Curves.fastOutSlowIn,
+      ),
+    );
 
     return SlideTransition(
       position: slideIn,
@@ -67,7 +77,7 @@ class _HomePageState extends State<HomePage> {
                   iconSize: 48,
                   icon: Row(
                     mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
+                    children: [
                       const Icon(
                         Icons.arrow_drop_up,
                         color: Colors.white,
@@ -109,14 +119,21 @@ class _HomePageState extends State<HomePage> {
           secondChild: showSecond
               ? Row(
                   mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
+                  children: [
                     IconButton(
-                      icon: Image.asset('assets/images/ic_important.png',
-                          width: 28),
+                      icon: Icon(
+                        Icons.star_border,
+                        size: 28,
+                        color: Colors.blueGrey[200],
+                      ),
                       onPressed: () => print('Tap!'),
                     ),
                     IconButton(
-                      icon: Image.asset('assets/images/ic_more.png', width: 28),
+                      icon: Icon(
+                        Icons.more_vert,
+                        size: 28,
+                        color: Colors.blueGrey[200],
+                      ),
                       onPressed: () => print('Tap!'),
                     ),
                   ],
@@ -124,7 +141,7 @@ class _HomePageState extends State<HomePage> {
               : const SizedBox(),
           crossFadeState:
               showSecond ? CrossFadeState.showSecond : CrossFadeState.showFirst,
-          duration: Duration(milliseconds: 450),
+          duration: const Duration(milliseconds: 450),
         );
       },
     );
@@ -138,7 +155,7 @@ class _HomePageState extends State<HomePage> {
         return FloatingActionButton(
           key: _fabKey,
           child: AnimatedSwitcher(
-            duration: Duration(milliseconds: 400),
+            duration: const Duration(milliseconds: 400),
             transitionBuilder: (child, animation) => ScaleTransition(
               child: child,
               scale: animation,
@@ -167,8 +184,10 @@ class _HomePageState extends State<HomePage> {
   Future<bool> _willPopCallback() async {
     if (_navigatorKey.currentState.canPop()) {
       _navigatorKey.currentState.pop();
-      Provider.of<EmailModel>(context, listen: false).currentlySelectedEmailId =
-          -1;
+      Provider.of<EmailModel>(
+        context,
+        listen: false,
+      ).currentlySelectedEmailId = -1;
       return false;
     }
     return true;

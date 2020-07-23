@@ -29,7 +29,12 @@ class ExpandItemPageTransition extends StatelessWidget {
         );
 
         final Animation<RelativeRect> itemPosition = RelativeRectTween(
-          begin: RelativeRect.fromLTRB(0, source.top, 0, constraints.biggest.height - source.bottom),
+          begin: RelativeRect.fromLTRB(
+            0,
+            source.top,
+            0,
+            constraints.biggest.height - source.bottom,
+          ),
           end: RelativeRect.fill,
         ).animate(positionAnimation);
 
@@ -38,7 +43,8 @@ class ExpandItemPageTransition extends StatelessWidget {
           curve: const Interval(0.0, 0.2, curve: Curves.ease),
         );
 
-        final double distanceToAvatar = topDisplayPadding + _calculateHeaderHeight(context, title) - 16;
+        final double distanceToAvatar =
+            topDisplayPadding + _calculateHeaderHeight(context, title) - 16;
 
         final Animation<Offset> contentOffset = Tween<Offset>(
           begin: Offset(0, -distanceToAvatar),
@@ -46,7 +52,7 @@ class ExpandItemPageTransition extends StatelessWidget {
         ).animate(positionAnimation);
 
         return Stack(
-          children: <Widget>[
+          children: [
             PositionedTransition(
               rect: itemPosition,
               child: ClipRect(
@@ -80,9 +86,12 @@ class ExpandItemPageTransition extends StatelessWidget {
   }
 
   double _calculateHeaderHeight(BuildContext context, String msg) {
-    final double maxWidth = MediaQuery.of(context).size.width - 80; // Padding on both sides and arrow button
-    final TextSpan span = TextSpan(style: Theme.of(context).textTheme.headline4, text: msg);
-    final TextPainter painter = TextPainter(text: span, textDirection: TextDirection.ltr);
+    final double maxWidth = MediaQuery.of(context).size.width -
+        80; // Padding on both sides and arrow button
+    final TextSpan span =
+        TextSpan(style: Theme.of(context).textTheme.headline4, text: msg);
+    final TextPainter painter =
+        TextPainter(text: span, textDirection: TextDirection.ltr);
     painter.layout(minWidth: 0, maxWidth: maxWidth);
     return painter.height + 26;
   }

@@ -17,16 +17,16 @@ class ListItem extends StatelessWidget {
     return Dismissible(
       key: ObjectKey(email),
       dismissThresholds: const {
-        DismissDirection.startToEnd: 1,
-        DismissDirection.endToStart: 0.4,
+        DismissDirection.startToEnd: 0.4,
+        DismissDirection.endToStart: 1,
       },
       onDismissed: (DismissDirection direction) {
         switch (direction) {
           case DismissDirection.endToStart:
-            onDeleted();
+            // TODO: Handle this case.
             break;
           case DismissDirection.startToEnd:
-            // TODO: Handle this case.
+            onDeleted();
             break;
           default:
           // Do not do anything
@@ -34,27 +34,25 @@ class ListItem extends StatelessWidget {
       },
       background: Container(
         decoration: BoxDecoration(
-          color: ReplyColors.orange,
+          color: ReplyColors.dismissibleBackground,
           border: Border.all(color: ReplyColors.notWhite, width: 2),
         ),
         alignment: Alignment.centerLeft,
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Image.asset(
-          'assets/images/ic_star.png',
-          width: 36,
+        child: Icon(
+          Icons.delete_outline,
+          size: 36,
+          color: Colors.blueGrey[200],
         ),
       ),
       secondaryBackground: Container(
         decoration: BoxDecoration(
-          color: ReplyColors.dismissibleBackground,
+          color: ReplyColors.orange,
           border: Border.all(color: ReplyColors.notWhite, width: 2),
         ),
         alignment: Alignment.centerRight,
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Image.asset(
-          'assets/images/ic_trash.png',
-          width: 36,
-        ),
+        child: Icon(Icons.star_border, size: 36),
       ),
       child: Padding(
         padding: const EdgeInsets.all(2),
@@ -65,7 +63,7 @@ class ListItem extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
+                children: [
                   _header(context),
                   if (!email.isRead) const SizedBox(height: 14),
                   if (!email.isRead) _emailPreview(context),
@@ -86,12 +84,12 @@ class ListItem extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.max,
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
+      children: [
         Expanded(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
+            children: [
               Text(
                 '${email.sender} — ${email.time}',
                 style: textTheme.caption.copyWith(
@@ -127,9 +125,9 @@ class ListItem extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
+      children: [
         Row(
-          children: <Widget>[
+          children: [
             if (email.hasAttachment)
               const Padding(
                 padding: EdgeInsets.only(right: 18),
@@ -155,7 +153,7 @@ class ListItem extends StatelessWidget {
   }
 
   List<Widget> get _miniGallery {
-    return <Widget>[
+    return [
       const SizedBox(height: 21),
       SizedBox(
         width: double.infinity,

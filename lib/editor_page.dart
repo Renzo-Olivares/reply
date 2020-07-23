@@ -36,13 +36,14 @@ class _EditorPageState extends State<EditorPage> {
   @override
   Widget build(BuildContext context) {
     final EmailModel emailModel = Provider.of<EmailModel>(context);
-    String fabIcon = 'assets/images/ic_edit.png';
+    IconData fabIcon = Icons.create;
 
     if (emailModel.currentlySelectedEmailId >= 0) {
       // We reply to an email, so let's change the icon during the transition
-      fabIcon = 'assets/images/ic_reply.png';
+      fabIcon = Icons.reply_all;
 
-      final Email replyToEmail = emailModel.emails[emailModel.currentlySelectedEmailId];
+      final Email replyToEmail =
+          emailModel.emails[emailModel.currentlySelectedEmailId];
       _subject = replyToEmail.subject;
       _recipient = replyToEmail.sender;
       _recipientAvatar = replyToEmail.avatar;
@@ -63,7 +64,7 @@ class _EditorPageState extends State<EditorPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
+                  children: [
                     _subjectRow,
                     _spacer,
                     _senderAddressRow,
@@ -76,9 +77,13 @@ class _EditorPageState extends State<EditorPage> {
                       child: TextField(
                         minLines: 6,
                         maxLines: 20,
-                        decoration: InputDecoration.collapsed(hintText: 'Message'),
+                        decoration:
+                            InputDecoration.collapsed(hintText: 'Message'),
                         autofocus: false,
-                        style: Theme.of(context).textTheme.caption.copyWith(fontSize: 14),
+                        style: Theme.of(context)
+                            .textTheme
+                            .caption
+                            .copyWith(fontSize: 14),
                       ),
                     ),
                   ],
@@ -94,7 +99,11 @@ class _EditorPageState extends State<EditorPage> {
   Widget get _spacer {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12),
-      child: Container(width: double.infinity, height: 1, color: ReplyColors.spacer),
+      child: Container(
+        width: double.infinity,
+        height: 1,
+        color: ReplyColors.spacer,
+      ),
     );
   }
 
@@ -103,7 +112,7 @@ class _EditorPageState extends State<EditorPage> {
       padding: const EdgeInsets.only(top: 8),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
+        children: [
           IconButton(
             onPressed: () => Navigator.of(context).pop(),
             icon: const Icon(
@@ -111,14 +120,15 @@ class _EditorPageState extends State<EditorPage> {
               color: ReplyColors.lightText,
             ),
           ),
-          Expanded(child: Text(_subject, style: Theme.of(context).textTheme.headline6)),
+          Expanded(
+            child: Text(
+              _subject,
+              style: Theme.of(context).textTheme.headline6,
+            ),
+          ),
           IconButton(
             onPressed: () => Navigator.of(context).pop(),
-            icon: Image.asset(
-              'assets/images/ic_send.png',
-              width: 24,
-              height: 24,
-            ),
+            icon: Icon(Icons.send, size: 24, color: Colors.blueGrey),
           ),
         ],
       ),
@@ -134,26 +144,38 @@ class _EditorPageState extends State<EditorPage> {
         });
       },
       itemBuilder: (BuildContext context) => <PopupMenuItem<String>>[
-            PopupMenuItem<String>(
-              value: 'from.jennifer@example.com',
-              child: Text('from.jennifer@example.com', style: Theme.of(context).textTheme.subtitle2),
-            ),
-            PopupMenuItem<String>(
-              value: 'hey@phantom.works',
-              child: Text('hey@phantom.works', style: Theme.of(context).textTheme.subtitle2),
-            ),
-          ],
+        PopupMenuItem<String>(
+          value: 'from.jennifer@example.com',
+          child: Text(
+            'from.jennifer@example.com',
+            style: Theme.of(context).textTheme.subtitle2,
+          ),
+        ),
+        PopupMenuItem<String>(
+          value: 'hey@phantom.works',
+          child: Text(
+            'hey@phantom.works',
+            style: Theme.of(context).textTheme.subtitle2,
+          ),
+        ),
+      ],
       child: Padding(
-        padding: const EdgeInsets.only(left: 12, top: 16, right: 10, bottom: 10),
+        padding:
+            const EdgeInsets.only(left: 12, top: 16, right: 10, bottom: 10),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Expanded(child: Text(_senderEmail, style: Theme.of(context).textTheme.subtitle2)),
+          children: [
+            Expanded(
+              child: Text(
+                _senderEmail,
+                style: Theme.of(context).textTheme.subtitle2,
+              ),
+            ),
             const Icon(
               Icons.arrow_drop_down,
               color: ReplyColors.lightText,
               size: 28,
-            )
+            ),
           ],
         ),
       ),
@@ -165,24 +187,29 @@ class _EditorPageState extends State<EditorPage> {
       padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
+        children: [
           Expanded(
             child: Wrap(
-              children: <Widget>[
+              children: [
                 Chip(
-                    backgroundColor: ReplyColors.chipBackground,
-                    padding: EdgeInsets.zero,
-                    avatar: CircleAvatar(
-                      backgroundImage: AssetImage('assets/images/$_recipientAvatar'),
-                    ),
-                    label: Text(_recipient, style: Theme.of(context).textTheme.subtitle2)),
+                  backgroundColor: ReplyColors.chipBackground,
+                  padding: EdgeInsets.zero,
+                  avatar: CircleAvatar(
+                    backgroundImage:
+                        AssetImage('assets/images/$_recipientAvatar'),
+                  ),
+                  label: Text(
+                    _recipient,
+                    style: Theme.of(context).textTheme.subtitle2,
+                  ),
+                ),
               ],
             ),
           ),
           const Icon(
             Icons.add_circle_outline,
             color: ReplyColors.lightText,
-          )
+          ),
         ],
       ),
     );

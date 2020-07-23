@@ -20,14 +20,15 @@ class DetailsPage extends StatefulWidget {
     final RenderBox box = context.findRenderObject();
     final Rect sourceRect = box.localToGlobal(Offset.zero) & box.size;
 
-    Provider.of<EmailModel>(context, listen: false).currentlySelectedEmailId = id;
+    Provider.of<EmailModel>(context, listen: false).currentlySelectedEmailId =
+        id;
 
     return PageRouteBuilder<void>(
       pageBuilder: (context, _, __) => DetailsPage(
-            id: id,
-            email: email,
-            sourceRect: sourceRect,
-          ),
+        id: id,
+        email: email,
+        sourceRect: sourceRect,
+      ),
       transitionDuration: const Duration(milliseconds: 350),
     );
   }
@@ -57,7 +58,7 @@ class _DetailsPageState extends State<DetailsPage> {
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
+                  children: [
                     _header,
                     _body,
                   ],
@@ -71,28 +72,36 @@ class _DetailsPageState extends State<DetailsPage> {
   }
 
   Widget get _header {
-    final Animation<double> fadeAnimation =
-        CurvedAnimation(parent: ModalRoute.of(context).animation, curve: Curves.fastOutSlowIn);
+    final Animation<double> fadeAnimation = CurvedAnimation(
+        parent: ModalRoute.of(context).animation, curve: Curves.fastOutSlowIn);
 
     return Column(
       mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
+      children: [
         Padding(
           padding: const EdgeInsets.only(left: 12, top: 12),
           child: FadeTransition(
             opacity: fadeAnimation,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Expanded(child: Text(widget.email.subject, style: Theme.of(context).textTheme.headline4)),
+              children: [
+                Expanded(
+                  child: Text(
+                    widget.email.subject,
+                    style: Theme.of(context).textTheme.headline4,
+                  ),
+                ),
                 IconButton(
                   icon: const Icon(Icons.keyboard_arrow_down),
                   padding: const EdgeInsets.only(left: 24, top: 0, right: 12),
                   onPressed: () {
-                    Provider.of<EmailModel>(context, listen: false).currentlySelectedEmailId = -1;
+                    Provider.of<EmailModel>(
+                      context,
+                      listen: false,
+                    ).currentlySelectedEmailId = -1;
                     Navigator.of(context).pop();
                   },
-                )
+                ),
               ],
             ),
           ),
@@ -101,14 +110,14 @@ class _DetailsPageState extends State<DetailsPage> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12),
           child: Row(
-            children: <Widget>[
+            children: [
               Expanded(
                 child: FadeTransition(
                   opacity: fadeAnimation,
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
+                    children: [
                       Text(
                         '${widget.email.sender} - ${widget.email.time}',
                         style: Theme.of(context).textTheme.bodyText1,
@@ -124,7 +133,9 @@ class _DetailsPageState extends State<DetailsPage> {
               ),
               Hero(
                 tag: widget.email.subject,
-                child: RoundedAvatar(image: 'assets/images/${widget.email.avatar}'),
+                child: RoundedAvatar(
+                  image: 'assets/images/${widget.email.avatar}',
+                ),
               ),
             ],
           ),
@@ -134,8 +145,8 @@ class _DetailsPageState extends State<DetailsPage> {
   }
 
   Widget get _body {
-    final Animation<double> fadeAnimation =
-        CurvedAnimation(parent: ModalRoute.of(context).animation, curve: Curves.fastOutSlowIn);
+    final Animation<double> fadeAnimation = CurvedAnimation(
+        parent: ModalRoute.of(context).animation, curve: Curves.fastOutSlowIn);
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -143,14 +154,15 @@ class _DetailsPageState extends State<DetailsPage> {
         opacity: fadeAnimation,
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
+          children: [
             const SizedBox(height: 24),
             Text(
               widget.email.message,
               style: Theme.of(context).textTheme.bodyText2,
             ),
             if (widget.email.containsPictures) const SizedBox(height: 24),
-            if (widget.email.containsPictures) Image.asset('assets/images/photo_grid.jpg'),
+            if (widget.email.containsPictures)
+              Image.asset('assets/images/photo_grid.jpg'),
             const SizedBox(height: 56),
           ],
         ),
