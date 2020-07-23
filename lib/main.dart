@@ -45,7 +45,7 @@ class ReplyApp extends StatelessWidget {
     return base.copyWith(
       headline4: base.headline4.copyWith(
         fontWeight: FontWeight.bold,
-        fontSize: 48,
+        fontSize: 36,
         letterSpacing: 0.4,
         height: 0.9,
         color: ReplyColors.darkerText,
