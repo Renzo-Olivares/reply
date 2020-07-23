@@ -166,7 +166,6 @@ class _HomePageState extends State<HomePage> {
 
   Future<bool> _willPopCallback() async {
     if (_navigatorKey.currentState.canPop()) {
-      print('hello');
       _navigatorKey.currentState.pop();
       provider.Provider.of<EmailModel>(context).currentlySelectedEmailId = -1;
       return false;
