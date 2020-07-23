@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart' as provider;
+import 'package:provider/provider.dart';
 import 'package:reply/editor_page.dart';
 import 'package:reply/list_page.dart';
 import 'package:reply/model/email_model.dart';
@@ -94,7 +94,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget get _actionItems {
-    return provider.Consumer<EmailModel>(
+    return Consumer<EmailModel>(
       builder: (context, model, child) {
         final bool showSecond = model.currentlySelectedEmailId >= 0;
 
@@ -131,7 +131,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget get _fab {
-    return provider.Consumer<EmailModel>(
+    return Consumer<EmailModel>(
       builder: (context, model, child) {
         final bool showEditAsAction = model.currentlySelectedEmailId == -1;
 
@@ -167,8 +167,8 @@ class _HomePageState extends State<HomePage> {
   Future<bool> _willPopCallback() async {
     if (_navigatorKey.currentState.canPop()) {
       _navigatorKey.currentState.pop();
-      provider.Provider.of<EmailModel>(context, listen: false)
-          .currentlySelectedEmailId = -1;
+      Provider.of<EmailModel>(context, listen: false).currentlySelectedEmailId =
+          -1;
       return false;
     }
     return true;

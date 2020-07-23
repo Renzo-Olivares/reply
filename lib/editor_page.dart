@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart' as provider;
+import 'package:provider/provider.dart';
 import 'package:reply/model/email_model.dart';
 import 'package:reply/colors.dart';
 import 'package:reply/transition/fab_fill_transition.dart';
@@ -35,7 +35,7 @@ class _EditorPageState extends State<EditorPage> {
 
   @override
   Widget build(BuildContext context) {
-    final EmailModel emailModel = provider.Provider.of<EmailModel>(context);
+    final EmailModel emailModel = Provider.of<EmailModel>(context);
     String fabIcon = 'assets/images/ic_edit.png';
 
     if (emailModel.currentlySelectedEmailId >= 0) {

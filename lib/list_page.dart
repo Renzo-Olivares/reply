@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart' as provider;
+import 'package:provider/provider.dart';
 import 'package:reply/model/email_model.dart';
 import 'package:reply/transition/scale_out_transition.dart';
 import 'package:reply/ui/list_item.dart';
@@ -7,7 +7,7 @@ import 'package:reply/ui/list_item.dart';
 class ListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return provider.Consumer<EmailModel>(
+    return Consumer<EmailModel>(
       builder: (context, model, child) {
         return ScaleOutTransition(
           child: Material(

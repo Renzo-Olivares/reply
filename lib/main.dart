@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart' as provider;
+import 'package:provider/provider.dart';
 import 'package:reply/home_page.dart';
 import 'package:reply/model/email_model.dart';
 import 'package:reply/colors.dart';
@@ -10,9 +10,9 @@ void main() => runApp(ReplyApp());
 class ReplyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return provider.MultiProvider(
+    return MultiProvider(
       providers: [
-        provider.ChangeNotifierProvider<EmailModel>.value(value: EmailModel()),
+        ChangeNotifierProvider<EmailModel>.value(value: EmailModel()),
       ],
       child: MaterialApp(
         title: 'Reply',
