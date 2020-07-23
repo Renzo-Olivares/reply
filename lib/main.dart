@@ -16,8 +16,6 @@ class ReplyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Reply',
-        darkTheme:
-            ThemeData().copyWith(textTheme: GoogleFonts.workSansTextTheme()),
         theme: _buildReplyLightTheme(context),
         initialRoute: 'replyMain',
         onGenerateRoute: (settings) {
