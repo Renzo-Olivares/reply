@@ -5,7 +5,8 @@ import 'package:reply/colors.dart';
 import 'package:reply/ui/rounded_avatar.dart';
 
 class ListItem extends StatelessWidget {
-  const ListItem({Key key, this.id, this.email, this.onDeleted}) : super(key: key);
+  const ListItem({Key key, this.id, this.email, this.onDeleted})
+      : super(key: key);
 
   final int id;
   final Email email;
@@ -71,7 +72,8 @@ class ListItem extends StatelessWidget {
                 ],
               ),
             ),
-            onTap: () => Navigator.of(context).push<void>(DetailsPage.route(context, id, email)),
+            onTap: () => Navigator.of(context)
+                .push<void>(DetailsPage.route(context, id, email)),
           ),
         ),
       ),
@@ -92,20 +94,30 @@ class ListItem extends StatelessWidget {
             children: <Widget>[
               Text(
                 '${email.sender} — ${email.time}',
-                style: textTheme.caption.copyWith(color: email.isRead ? ReplyColors.deactivatedText : ReplyColors.darkText),
+                style: textTheme.caption.copyWith(
+                  color: email.isRead
+                      ? ReplyColors.deactivatedText
+                      : ReplyColors.darkText,
+                ),
               ),
               const SizedBox(height: 2),
               Text(
                 email.subject,
                 style: email.containsPictures
                     ? textTheme.headline5
-                    : textTheme.headline6.copyWith(color: email.isRead ? ReplyColors.deactivatedText : ReplyColors.darkText),
+                    : textTheme.headline6.copyWith(
+                        color: email.isRead
+                            ? ReplyColors.deactivatedText
+                            : ReplyColors.darkText,
+                      ),
                 overflow: TextOverflow.ellipsis,
               ),
             ],
           ),
         ),
-        Hero(tag: email.subject, child: RoundedAvatar(image: 'assets/images/${email.avatar}')),
+        Hero(
+            tag: email.subject,
+            child: RoundedAvatar(image: 'assets/images/${email.avatar}')),
       ],
     );
   }
