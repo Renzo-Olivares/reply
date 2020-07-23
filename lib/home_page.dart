@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
         position: slideOut,
         child: BottomAppBar(
           color: ReplyColors.grey,
-          shape: AutomaticNotchedShape(RoundedRectangleBorder(), CircleBorder()),
+          shape: CircularNotchedRectangle(),
           notchMargin: 8,
           child: SizedBox(
             height: 48,
