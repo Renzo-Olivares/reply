@@ -131,35 +131,34 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget get _fab {
-    return AnimatedBuilder(
-      animation: ModalRoute.of(context).animation,
-      child: provider.Consumer<EmailModel>(
-        builder: (context, model, child) {
-          final bool showEditAsAction = model.currentlySelectedEmailId == -1;
+    return provider.Consumer<EmailModel>(
+      builder: (context, model, child) {
+        final bool showEditAsAction = model.currentlySelectedEmailId == -1;
 
-          return FloatingActionButton(
-            key: _fabKey,
-            child: SizedBox(
-              width: 24,
-              height: 24,
-              child: Icon(
-                showEditAsAction ? Icons.create : Icons.reply_all,
-                color: Colors.black,
-              ),
+        return FloatingActionButton(
+          key: _fabKey,
+          child: AnimatedSwitcher(
+            duration: Duration(milliseconds: 400),
+            transitionBuilder: (child, animation) => ScaleTransition(
+              child: child,
+              scale: animation,
             ),
-            backgroundColor: ReplyColors.orange,
-            onPressed: () => Navigator.of(context).push<void>(
-              EditorPage.route(context, _fabKey),
-            ),
-          );
-        },
-      ),
-      builder: (context, fab) {
-        final Animation<double> animation = ModalRoute.of(context).animation;
-        return SizedBox(
-          width: 54 * animation.value,
-          height: 54 * animation.value,
-          child: fab,
+            child: showEditAsAction
+                ? Icon(
+                    Icons.create,
+                    color: Colors.black,
+                    key: UniqueKey(),
+                  )
+                : Icon(
+                    Icons.reply_all,
+                    color: Colors.black,
+                    key: UniqueKey(),
+                  ),
+          ),
+          backgroundColor: ReplyColors.orange,
+          onPressed: () => Navigator.of(context).push<void>(
+            EditorPage.route(context, _fabKey),
+          ),
         );
       },
     );
@@ -167,6 +166,7 @@ class _HomePageState extends State<HomePage> {
 
   Future<bool> _willPopCallback() async {
     if (_navigatorKey.currentState.canPop()) {
+      print('hello');
       _navigatorKey.currentState.pop();
       provider.Provider.of<EmailModel>(context).currentlySelectedEmailId = -1;
       return false;
